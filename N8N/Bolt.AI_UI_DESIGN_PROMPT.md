@@ -1,8 +1,8 @@
-# 🎨 Genspark UI Design Prompt - Bible Video Generator Frontend
+# 🎨 Bolt.AI UI Design Prompt - Bible Video Generator Frontend
 
 **📋 Document Version**: `v1.0.0`  
 **🔄 Last Updated**: June 26, 2025 at 9:56 PM  
-**🎯 Purpose**: Complete design prompt for Genspark frontend development
+**🎯 Purpose**: Complete design prompt for Bolt.AI frontend development
 
 ---
 
@@ -17,7 +17,7 @@
 
 ---
 
-## 🎯 **DESIGN BRIEF FOR GENSPARK**
+## 🎯 **DESIGN BRIEF FOR Bolt.AI**
 
 ### **Create a modern, professional web application interface for a Bible Video Generator with the following specifications:**
 
@@ -463,7 +463,7 @@ But With:
 
 ---
 
-## 🎯 **SPECIFIC GENSPARK INSTRUCTIONS**
+## 🎯 **SPECIFIC Bolt.AI INSTRUCTIONS**
 
 **Create a modern, professional web application for biblical video generation with:**
 
