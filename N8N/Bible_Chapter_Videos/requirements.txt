@@ -1,0 +1,62 @@
+# Bible Chapter Video Generator - Dependencies
+# Component-specific requirements
+# Version: v2.1.0
+# Last Updated: June 27, 2025
+
+# =============================================================================
+# CORE FUNCTIONALITY
+# =============================================================================
+# biblical_text_processor.py uses only Python built-ins:
+# - re, os, sys (no external dependencies required)
+
+# =============================================================================
+# TESTING & VALIDATION
+# =============================================================================
+
+# API testing for n8n workflow validation
+requests>=2.31.0
+
+# JSON validation for Perplexity AI responses
+jsonschema>=4.17.0
+
+# =============================================================================
+# OPTIONAL ENHANCEMENTS
+# =============================================================================
+
+# Enhanced text processing (for future development)
+# nltk>=3.8.0        # Natural language processing
+# textstat>=0.7.0    # Text readability statistics
+
+# Configuration management (for future config files)
+# pyyaml>=6.0        # YAML configuration support
+
+# Logging enhancements (for production monitoring)
+# colorlog>=6.7.0    # Colored logging output
+
+# =============================================================================
+# DEVELOPMENT TOOLS (Optional)
+# =============================================================================
+
+# Code quality
+black>=23.0.0
+flake8>=6.0.0
+
+# Testing framework
+pytest>=7.4.0
+
+# =============================================================================
+# INSTALLATION INSTRUCTIONS
+# =============================================================================
+#
+# Minimal installation (core functionality only):
+#   # No installation needed - uses Python built-ins only
+#   python biblical_text_processor.py
+#
+# With testing capabilities:
+#   pip install requests jsonschema
+#
+# Full development setup:
+#   pip install -r requirements.txt
+#
+# Testing the workflow:
+#   python test_biblical_prompt.py  # From TESTING_STRATEGY.md 

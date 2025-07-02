@@ -1,0 +1,48 @@
+# LongForm Video Generation Platform - Core Dependencies
+# Minimal Requirements for Core Functionality
+# Version: v2.1.0
+# Last Updated: June 27, 2025
+
+# =============================================================================
+# CORE BIBLICAL TEXT PROCESSING
+# =============================================================================
+# The biblical text processors (biblical_text_processor.py and 
+# biblical_text_processor_v2.py) use ONLY Python built-in modules:
+#
+# - re (regular expressions)
+# - os (operating system interface)  
+# - sys (system-specific parameters)
+#
+# NO EXTERNAL DEPENDENCIES REQUIRED FOR CORE FUNCTIONALITY
+# =============================================================================
+
+# This file exists for completeness and future core dependencies
+# Current core scripts are dependency-free by design for maximum compatibility
+
+# Minimum Python version requirement: 3.7+
+# To verify compatibility: python --version
+
+# =============================================================================
+# INSTALLATION NOTES
+# =============================================================================
+#
+# The core biblical text processing scripts can run with just Python 3.7+
+# No pip installation required for basic operation
+#
+# To run core functionality:
+#   cd Bible_Chapter_Videos/
+#   python biblical_text_processor.py
+#
+#   cd -p/biblical_text_processorv2/  
+#   python biblical_text_processor_v2.py
+#
+# =============================================================================
+# CORE DEPENDENCIES
+# =============================================================================
+#
+# - re (regular expressions)
+# - os (operating system interface)  
+# - sys (system-specific parameters)
+#
+# =============================================================================
+# END OF FILE 

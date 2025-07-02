@@ -1,0 +1,82 @@
+# LongForm Video Generation Platform - Testing Dependencies  
+# Requirements for Testing and Quality Assurance
+# Version: v2.1.0
+# Last Updated: June 27, 2025
+
+# =============================================================================
+# API TESTING DEPENDENCIES
+# =============================================================================
+
+# HTTP client for Perplexity AI and JSON2Video API testing
+requests>=2.31.0
+
+# JSON schema validation for API responses
+jsonschema>=4.17.0
+
+# =============================================================================
+# TESTING FRAMEWORK
+# =============================================================================
+
+# Core testing framework
+pytest>=7.4.0
+
+# Mock objects for testing
+pytest-mock>=3.11.0
+
+# Coverage reporting
+pytest-cov>=4.1.0
+
+# =============================================================================
+# API-SPECIFIC TESTING
+# =============================================================================
+
+# HTTP request/response testing
+responses>=0.23.0
+
+# JSON validation and manipulation
+jmespath>=1.0.0
+
+# =============================================================================
+# QUALITY ASSURANCE
+# =============================================================================
+
+# Code formatting
+black>=23.0.0
+
+# Linting
+flake8>=6.0.0
+
+# Import sorting
+isort>=5.12.0
+
+# Type checking
+mypy>=1.5.0
+
+# =============================================================================
+# TESTING UTILITIES
+# =============================================================================
+
+# Time/date testing utilities  
+freezegun>=1.2.0
+
+# Temporary file testing
+pytest-tmp-path>=3.4.0
+
+# =============================================================================
+# INSTALLATION INSTRUCTIONS
+# =============================================================================
+#
+# Install testing dependencies:
+#   pip install -r requirements-test.txt
+#
+# Run the test suite:
+#   cd Bible_Chapter_Videos/
+#   python -m pytest tests/ -v
+#
+# Run API testing script from TESTING_STRATEGY.md:
+#   python test_biblical_prompt.py
+#
+# Run with coverage:
+#   pytest --cov=. tests/
+#
+``` 

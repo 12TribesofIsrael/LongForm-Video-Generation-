@@ -1,0 +1,76 @@
+# LongForm Video Generation Platform - Dependencies
+# Main Requirements File
+# Version: v2.1.0
+# Last Updated: June 27, 2025
+
+# =============================================================================
+# CORE DEPENDENCIES
+# =============================================================================
+# Note: Core biblical text processors use only Python built-ins (re, os, sys)
+# No external dependencies required for basic operation
+
+# =============================================================================
+# API CLIENT DEPENDENCIES (Optional - for testing and monitoring)
+# =============================================================================
+
+# HTTP requests for API testing and integration
+requests>=2.31.0
+
+# JSON handling enhancements (built-in json module sufficient for core usage)
+# Adding for advanced JSON validation in testing
+jsonschema>=4.17.0
+
+# =============================================================================
+# DEVELOPMENT & TESTING DEPENDENCIES
+# =============================================================================
+
+# Testing framework
+pytest>=7.4.0
+pytest-mock>=3.11.0
+
+# Code quality and formatting
+black>=23.0.0
+flake8>=6.0.0
+
+# Type checking
+mypy>=1.5.0
+
+# =============================================================================
+# DOCUMENTATION DEPENDENCIES
+# =============================================================================
+
+# Markdown processing for documentation
+markdown>=3.4.0
+
+# =============================================================================
+# MONITORING & LOGGING (Optional)
+# =============================================================================
+
+# Enhanced logging capabilities
+colorlog>=6.7.0
+
+# Configuration management
+pyyaml>=6.0
+
+# =============================================================================
+# COMPATIBILITY REQUIREMENTS
+# =============================================================================
+
+# Python version requirement
+# Requires Python 3.7+
+
+# =============================================================================
+# INSTALLATION INSTRUCTIONS
+# =============================================================================
+#
+# Basic installation (core functionality only):
+#   pip install --no-deps -r requirements.txt
+#
+# Full installation (with testing and development tools):
+#   pip install -r requirements.txt
+#
+# Testing only:
+#   pip install -r requirements-test.txt
+#
+# Development only:
+#   pip install -r requirements-dev.txt 

@@ -1,0 +1,456 @@
+{
+  "name": "BibleWorkflowv3",
+  "nodes": [
+    {
+      "parameters": {
+        "jsCode": "// Get the input text from previous node\nconst inputText = $('Bible Chapter Text Input').item.json.inputText;\n\n// ENHANCED Build the request payload with Make.com-style prompting\nconst requestPayload = {\n  model: \"llama-3.1-sonar-large-128k-online\",\n  messages: [{\n    role: \"user\", \n    content: `You are a Biblical storytelling and video production expert. Create a script for a long-form video that narrates the Bible chapter content provided: \"${inputText}\" exactly as it is—word for word and line for line. Do not summarize or paraphrase any part of the biblical text. Instead, break the Bible chapter into scenes that facilitate the creation of engaging biblical video content. For each non-empty verse or sentence of the biblical text, create a separate scene where both the overlaid text and the voice-over text match the biblical text exactly. Make sure ALL  people depicted in the visuals represent Black African-American Hebrew Israelites (male or female) with richly melanated skin and locs, wearing fringes. Absolutly no Caucasian or white men race unless explicitly meantioned in input.\n\nIf a verse is too short to meet the minimum voice-over text length of 20 words, combine it with the following verse(s) without altering the original biblical wording.\n\nYour output must be in JSON format following this exact schema:\n\n{\n  \"scenes\": [\n    {\n      \"overlaidText\": \"Direct biblical phrase from the text (3-8 words)\",\n      \"voiceOverText\": \"Exact biblical text word-for-word (20+ words minimum)\",\n      \"imagePrompt\": \"Detailed visual description for biblical scene with appropriate religious imagery\"\n    }\n  ]\n}\n\nIMPORTANT GUIDELINES:\n- Use the biblical text exactly as provided—word for word and line for line\n- Create a separate scene for each verse or sentence in the biblical text\n- VoiceOverText must be the exact biblical wording, no paraphrasing\n- OverlaidText should be direct quotes from the biblical text (3-8 words)\n- ImagePrompts should be reverent, appropriate biblical visuals (avoid depicting God directly)\n- The number of scenes should match the length and structure of the input text\n- Longer biblical passages should result in more scenes and longer videos\n- Focus on maintaining the exact biblical wording and spiritual significance\n- Absolutly no Caucasian or white men race unless explicitly meantioned in input\n- ALL  people depicted in the visuals represent Black African-American Hebrew Israelites (male or female) with richly melanated skin and locs, wearing fringes\n\n\nReturn ONLY the JSON, no other text.`\n  }],\n  max_tokens: 5000,\n  temperature: 0.7\n};\n\n// Return the payload\nreturn [{\n  json: requestPayload\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1860,
+        40
+      ],
+      "id": "9f8335e7-55ac-4774-b33d-176d297b6e41",
+      "name": "Biblical Content Prompt Builder"
+    },
+    {
+      "parameters": {
+        "amount": 15
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -540,
+        140
+      ],
+      "id": "a7bb8630-b036-475f-935a-c61f610ea18b",
+      "name": "Wait 15 Seconds",
+      "webhookId": "f17237d9-4b2d-4272-af94-4ff174133de3"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "error-message-final",
+              "name": "errorMessage",
+              "value": "={{ $json.movie.message }}",
+              "type": "string"
+            },
+            {
+              "id": "error-status-final",
+              "name": "errorStatus",
+              "value": "{{ $json.movie.status }}",
+              "type": "string"
+            },
+            {
+              "id": "error-time-final",
+              "name": "errorTime",
+              "value": "={{ new Date().toISOString() }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -540,
+        -60
+      ],
+      "id": "83658d6b-ae84-4a20-8f12-26429bc22a25",
+      "name": "Error Output"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "video-url-final",
+              "name": "finalVideoUrl",
+              "value": "={{ $json.movie.url }}",
+              "type": "string"
+            },
+            {
+              "id": "video-duration-final",
+              "name": "videoDuration",
+              "value": "={{ $json.movie.duration }}",
+              "type": "number"
+            },
+            {
+              "id": "video-size-final",
+              "name": "videoSize",
+              "value": "={{ $json.movie.size }}",
+              "type": "number"
+            },
+            {
+              "id": "completion-time-final",
+              "name": "completedAt",
+              "value": "={{ $json.movie.ended_at }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -540,
+        -260
+      ],
+      "id": "5b137d5d-4232-46e8-9349-03251c1e1601",
+      "name": "Final Video Output"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "video-complete",
+                    "leftValue": "={{ $json.movie.status }}",
+                    "rightValue": "done",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Video Complete"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.movie.status }}",
+                    "rightValue": "error",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "video-error"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Video Error"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "video-processing",
+                    "leftValue": "={{ $json.movie.status }}",
+                    "rightValue": "running",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Still Processing"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        -760,
+        -60
+      ],
+      "id": "cd5ac7b3-b2a6-415f-8b9b-db563ce406d6",
+      "name": "Video Status Router"
+    },
+    {
+      "parameters": {
+        "url": "https://api.json2video.com/v2/movies",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "project",
+              "value": "={{ $('Generate 16:9 Spiritual Video').item.json.project }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -980,
+        40
+      ],
+      "id": "07470eab-06ca-431c-b9e3-d952962d794c",
+      "name": "Check Video Status",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "pKpJaJTXBg3wLGgY",
+          "name": "Json2Video"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.json2video.com/v2/movies",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"template\": \"AjVMAMphIadE4L3apPGf\",\n  \"resolution\": \"hd\",\n  \"quality\": \"high\",\n  \"variables\": {{ JSON.stringify($('Enhanced Format for 16:9 Template').item.json.templateVariables) }},\n  \"settings\": {\n    \"sceneDuration\": \"auto\",\n    \"voiceTiming\": \"natural\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1200,
+        40
+      ],
+      "id": "9ef45cdf-d7ff-411c-bb49-0c14a6472917",
+      "name": "Generate 16:9 Spiritual Video",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "pKpJaJTXBg3wLGgY",
+          "name": "Json2Video"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Parse Perplexity response and format for DYNAMIC BIBLICAL TEMPLATE\nconst response = items[0].json.choices[0].message.content;\n\n// Extract JSON from response\nlet sceneData;\ntry {\n  const jsonMatch = response.match(/\\{[\\s\\S]*\\}/);\n  sceneData = jsonMatch ? JSON.parse(jsonMatch[0]) : JSON.parse(response);\n} catch (error) {\n  throw new Error('Failed to parse Perplexity response: ' + error.message);\n}\n\n// Get scenes array\nlet scenes = sceneData.scenes || [];\n\nif (scenes.length === 0) {\n  throw new Error('No scenes found in response. Raw response: ' + response);\n}\n\n// Function to clean text for JSON safety\nfunction cleanText(text) {\n  if (!text) return '';\n  return text\n    .replace(/\"/g, \"'\")\n    .replace(/\\n/g, \" \")\n    .replace(/\\r/g, \" \")\n    .replace(/\\t/g, \" \")\n    .replace(/[\\u0000-\\u001F\\u007F-\\u009F]/g, \"\")\n    .trim();\n}\n\n// Format scenes for TEMPLATE with DYNAMIC VARIABLES\nconst templateVariables = {};\n\n// Add all scenes as template variables\nscenes.forEach((scene, index) => {\n  const sceneNum = index + 1;\n  templateVariables[`scene${sceneNum}_overlaidText`] = cleanText(scene.overlaidText || scene.title || `Scene ${sceneNum}`);\n  templateVariables[`scene${sceneNum}_voiceOverText`] = cleanText(scene.voiceOverText || scene.voiceoverText || scene.description || '');\n  templateVariables[`scene${sceneNum}_imagePrompt`] = cleanText(scene.imagePrompt || scene.imageDescription || `Biblical scene ${sceneNum}`);\n});\n\n// Add scene count for template logic\ntemplateVariables.totalScenes = scenes.length;\ntemplateVariables.sceneDuration = \"auto\"; // Let template use voice duration\n\n// Return the template variables\nconst result = {\n  scenes: scenes, // Original scenes for debugging\n  templateVariables: templateVariables, // Variables for template\n  totalScenes: scenes.length,\n  debugInfo: {\n    originalResponseLength: response.length,\n    parsedScenesCount: scenes.length,\n    templateVariablesCount: Object.keys(templateVariables).length,\n    timestamp: new Date().toISOString(),\n    version: 'Template Variables v4.0 - Using Template with Dynamic Variables'\n  }\n};\n\nreturn result;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1420,
+        40
+      ],
+      "id": "6b8396d2-4509-4042-8355-d809db1813db",
+      "name": "Enhanced Format for 16:9 Template"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.perplexity.ai/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={{ JSON.stringify($json) }}",
+        "options": {
+          "lowercaseHeaders": false
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1640,
+        40
+      ],
+      "id": "6c72c206-fba3-4b27-9a2c-da95f5d6733d",
+      "name": "Perplexity AI Scene Generator",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "noOOIabOZieEx3ug",
+          "name": "Perplexity-API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "input-content-final",
+              "name": "inputText",
+              "value": "And immediately the Spirit driueth him into the wildernesse.\nAnd he was there in the wildernesse fourtie daies tempted of Satan, and was with the wildbeasts, and the Angels ministred vnto him.\nNow after that Iohn was put in prison, Iesus came into Galilee, preaching the Gospell of the kingdome of God,\nAnd saying, The time is fulfilled, and the kingdome of God is at hand: repent ye, and beleeue the Gospell.\nNow as he walked by the Sea of Galilee, he saw Simon, and Andrew his brother, casting a net into the Sea (for they were fishers.)\nAnd Iesus said vnto them, Come ye after me; and I will make you to become fishers of men.\nAnd straightway they forsooke their nets, and followed him.\nAnd when hee had gone a little further thence, hee saw Iames the sonne of Zebedee, and Iohn his brother, who also were in the ship mending their nets.\nAnd straightway he called them: and they left their father Zebedee in the ship with the hired seruants, and went after him.\nAnd they went into Capernaum, and straightway on the Sabbath day he entred into the Synagogue, and taught.\nAnd they were astonished at his doctrine: for hee taught them as one that had authority, and not as the Scribes.\nAnd there was in their Synagogue a man with an vncleane spirit, and he cried out,\nSaying, Let vs alone, what haue we to doe with thee, thou Iesus of Nazareth? Art thou come to destroy vs? I know thee who thou art, the holy One of God.\nAnd Iesus rebuked him, saying, Hold thy peace, and come out of him.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -2080,
+        40
+      ],
+      "id": "a7c584b4-d893-4f9b-855b-726e210f9d00",
+      "name": "Bible Chapter Text Input"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -2300,
+        40
+      ],
+      "id": "d13f2e9f-38ce-44d4-aba5-f9a6aee7c4db",
+      "name": "Start Workflow"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Wait 15 Seconds": {
+      "main": [
+        [
+          {
+            "node": "Check Video Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Video Status Router": {
+      "main": [
+        [
+          {
+            "node": "Final Video Output",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Error Output",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait 15 Seconds",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Video Status": {
+      "main": [
+        [
+          {
+            "node": "Video Status Router",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate 16:9 Spiritual Video": {
+      "main": [
+        [
+          {
+            "node": "Check Video Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enhanced Format for 16:9 Template": {
+      "main": [
+        [
+          {
+            "node": "Generate 16:9 Spiritual Video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Perplexity AI Scene Generator": {
+      "main": [
+        [
+          {
+            "node": "Enhanced Format for 16:9 Template",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Bible Chapter Text Input": {
+      "main": [
+        [
+          {
+            "node": "Biblical Content Prompt Builder",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Biblical Content Prompt Builder": {
+      "main": [
+        [
+          {
+            "node": "Perplexity AI Scene Generator",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Start Workflow": {
+      "main": [
+        [
+          {
+            "node": "Bible Chapter Text Input",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "b34a7123-548a-4bf6-94b8-8c2b226e07ff",
+  "meta": {
+    "instanceId": "c71ecfbc6cd667fd069cd84f01f128834a34f2b3a956da891f33f10bd104d2b8"
+  },
+  "id": "MOxRK36brwn5ls8z",
+  "tags": []
+}

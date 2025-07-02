@@ -1,0 +1,130 @@
+{
+  "name": "Master2 Backup - No Perplexity",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [-200, 20],
+      "id": "manual-trigger-backup",
+      "name": "Start Workflow"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "input-content-backup",
+              "name": "formattedText",
+              "value": "How I love the Most High with all my mind, body, and soul. With all my mind, I reflect on the teachings and wisdom of the Most High.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [100, 20],
+      "id": "input-text-backup",
+      "name": "Input Text Content"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "hardcoded-scenes",
+              "name": "scenes",
+              "value": [
+                {
+                  "title": "Mind - Reflection",
+                  "voiceoverText": "With all my mind, I reflect on the teachings and wisdom of the Most High. In quiet moments of prayer, I seek guidance and understanding.",
+                  "imagePrompt": "A person in peaceful meditation, reading spiritual texts in a serene, well-lit room with warm lighting"
+                },
+                {
+                  "title": "Body - Worship",
+                  "voiceoverText": "With all my body, I worship and serve the Most High. Through movement, dance, and physical expressions of praise, I honor Him completely.",
+                  "imagePrompt": "A person engaged in spiritual worship through movement and dance, expressing devotion with their whole being"
+                },
+                {
+                  "title": "Soul - Surrender",
+                  "voiceoverText": "With all my soul, I surrender completely to the Most High. My deepest emotions and innermost being are devoted to Him.",
+                  "imagePrompt": "A peaceful spiritual scene showing inner connection and surrender, with soft lighting and serene atmosphere"
+                },
+                {
+                  "title": "Integration - Unity",
+                  "voiceoverText": "When my mind, body, and soul are aligned, I experience deep and holistic devotion to the Most High, bringing balance to my life.",
+                  "imagePrompt": "A harmonious scene representing balance and integration of mind, body, and soul in spiritual devotion"
+                },
+                {
+                  "title": "Community - Together",
+                  "voiceoverText": "Together with my community, we love the Most High with all our beings. Our shared love strengthens our faith and bonds us together.",
+                  "imagePrompt": "A group of diverse people in prayer and worship together, showing unity and shared spiritual devotion"
+                }
+              ],
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [400, 20],
+      "id": "hardcoded-scenes-backup",
+      "name": "Hardcoded Scenes (Bypass Perplexity)"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Use hardcoded scenes and format for existing template (NO PERPLEXITY NEEDED)\nconst scenes = items[0].json.scenes;\n\n// Transform scenes to match EXISTING TEMPLATE's ranking structure\nconst ranking = scenes.map((scene, index) => ({\n  voiceoverText: scene.voiceoverText,\n  imagePrompt: scene.imagePrompt,\n  lowerThirdText: scene.title\n}));\n\nreturn {\n  totalScenes: scenes.length,\n  ranking: ranking,\n  introImagePrompt: \"A peaceful spiritual introduction scene with warm, welcoming light and serene atmosphere\",\n  introVoiceoverText: \"Welcome to this spiritual journey as we explore loving the Most High with our complete being - mind, body, and soul.\",\n  outroImagePrompt: \"A concluding spiritual scene with soft, peaceful imagery representing fulfillment and devotion\",\n  outroVoiceoverText: \"May this reflection on complete devotion to the Most High inspire and guide your own spiritual journey. Thank you for joining us.\",\n  videoTitle: \"Loving the Most High - Complete Devotion\",\n  originalScenes: scenes\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [700, 20],
+      "id": "format-scenes-backup",
+      "name": "Format Scenes (No AI)"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.json2video.com/v2/movies",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"template\": \"9XtfsD0C3Tb2vbvfc84d\",\n  \"variables\": {\n    \"title\": \"{{ $('Format Scenes (No AI)').item.json.videoTitle }}\",\n    \"voiceModel\": \"azure\",\n    \"voiceID\": \"en-US-JennyNeural\",\n    \"imageModel\": \"flux-pro\",\n    \"introImagePrompt\": \"{{ $('Format Scenes (No AI)').item.json.introImagePrompt }}\",\n    \"introVoiceoverText\": \"{{ $('Format Scenes (No AI)').item.json.introVoiceoverText }}\",\n    \"outroImagePrompt\": \"{{ $('Format Scenes (No AI)').item.json.outroImagePrompt }}\",\n    \"outroVoiceoverText\": \"{{ $('Format Scenes (No AI)').item.json.outroVoiceoverText }}\",\n    \"ranking\": {{ $('Format Scenes (No AI)').item.json.ranking }}\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1000, 20],
+      "id": "generate-video-backup",
+      "name": "Generate Video (Test)",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "pKpJaJTXBg3wLGgY",
+          "name": "Json2Video"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Start Workflow": {
+      "main": [[{"node": "Input Text Content", "type": "main", "index": 0}]]
+    },
+    "Input Text Content": {
+      "main": [[{"node": "Hardcoded Scenes (Bypass Perplexity)", "type": "main", "index": 0}]]
+    },
+    "Hardcoded Scenes (Bypass Perplexity)": {
+      "main": [[{"node": "Format Scenes (No AI)", "type": "main", "index": 0}]]
+    },
+    "Format Scenes (No AI)": {
+      "main": [[{"node": "Generate Video (Test)", "type": "main", "index": 0}]]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  }
+} 

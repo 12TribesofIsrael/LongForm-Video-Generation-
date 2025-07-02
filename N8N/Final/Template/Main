@@ -1,0 +1,190 @@
+{
+  "id": "q5t1aj2k",
+  "comment": "Spiritual Scenes 16:9 Template - CORRECT FORMAT",
+  "resolution": "full-hd",
+  "variables": {
+    "scene1_imagePrompt": "A peaceful person in prayer, surrounded by soft light, deep in spiritual contemplation",
+    "scene1_voiceOverText": "With all my mind, I reflect on the teachings and wisdom of the Most High. In quiet moments of prayer, I seek guidance and understanding.",
+    "scene1_overlaidText": "Mind - Reflection",
+    "scene2_imagePrompt": "A person in worship, hands raised, expressing devotion through physical movement and dance",
+    "scene2_voiceOverText": "With all my body, I worship and serve the Most High. Through active movement and physical expressions of praise, I honor Him.",
+    "scene2_overlaidText": "Body - Worship",
+    "scene3_imagePrompt": "A serene spiritual scene showing complete surrender, with warm divine light embracing the soul",
+    "scene3_voiceOverText": "With all my soul, I surrender completely to the Most High. My deepest emotions and innermost being are devoted to Him.",
+    "scene3_overlaidText": "Soul - Devotion",
+    "scene4_imagePrompt": "A harmonious scene showing the integration of mind, body, and soul in spiritual unity",
+    "scene4_voiceOverText": "When my mind, body, and soul are aligned, I experience deep and holistic devotion that brings balance and harmony.",
+    "scene4_overlaidText": "Integration",
+    "scene5_imagePrompt": "A community gathering in spiritual unity, people of different backgrounds joined together in love and faith",
+    "scene5_voiceOverText": "Together with my community, we love the Most High with all our beings. Our shared love strengthens our faith and bonds us.",
+    "scene5_overlaidText": "Community"
+  },
+  "scenes": [
+    {
+      "id": "q6c4dqbu",
+      "comment": "Scene 1 - Mind",
+      "duration": 8,
+      "elements": [
+        {
+          "id": "qpbodyng",
+          "type": "image",
+          "prompt": "{{scene1_imagePrompt}}",
+          "model": "freepik-classic",
+          "resize": "cover",
+          "duration": 8
+        },
+        {
+          "id": "q8dbokxt",
+          "type": "text",
+          "text": "{{scene1_overlaidText}}",
+          "position": "bottom-left",
+          "x": 100,
+          "y": 900,
+          "width": 800,
+          "height": 100,
+          "duration": 8
+        },
+        {
+          "id": "qjhhkdzu",
+          "type": "voice",
+          "text": "{{scene1_voiceOverText}}",
+          "voice": "en-US-JennyNeural",
+          "model": "azure"
+        }
+      ]
+    },
+    {
+      "id": "q4cu1dx8",
+      "comment": "Scene 2 - Body",
+      "duration": 8,
+      "elements": [
+        {
+          "id": "qy4g54z3",
+          "type": "image",
+          "prompt": "{{scene2_imagePrompt}}",
+          "model": "freepik-classic",
+          "resize": "cover",
+          "duration": 8
+        },
+        {
+          "id": "qqwz4uep",
+          "type": "text",
+          "text": "{{scene2_overlaidText}}",
+          "position": "bottom-left",
+          "x": 100,
+          "y": 900,
+          "width": 800,
+          "height": 100,
+          "duration": 8
+        },
+        {
+          "id": "qeh8p5b3",
+          "type": "voice",
+          "text": "{{scene2_voiceOverText}}",
+          "voice": "en-US-JennyNeural",
+          "model": "azure"
+        }
+      ]
+    },
+    {
+      "id": "qioq0es7",
+      "comment": "Scene 3 - Soul",
+      "duration": 8,
+      "elements": [
+        {
+          "id": "qfb5ajea",
+          "type": "image",
+          "prompt": "{{scene3_imagePrompt}}",
+          "model": "freepik-classic",
+          "resize": "cover",
+          "duration": 8
+        },
+        {
+          "id": "qr4qajo4",
+          "type": "text",
+          "text": "{{scene3_overlaidText}}",
+          "position": "bottom-left",
+          "x": 100,
+          "y": 900,
+          "width": 800,
+          "height": 100,
+          "duration": 8
+        },
+        {
+          "id": "qd3an3ek",
+          "type": "voice",
+          "text": "{{scene3_voiceOverText}}",
+          "voice": "en-US-JennyNeural",
+          "model": "azure"
+        }
+      ]
+    },
+    {
+      "id": "qp0utn3d",
+      "comment": "Scene 4 - Integration",
+      "duration": 8,
+      "elements": [
+        {
+          "id": "q8ed4ccg",
+          "type": "image",
+          "prompt": "{{scene4_imagePrompt}}",
+          "model": "freepik-classic",
+          "resize": "cover",
+          "duration": 8
+        },
+        {
+          "id": "q264cw8y",
+          "type": "text",
+          "text": "{{scene4_overlaidText}}",
+          "position": "bottom-left",
+          "x": 100,
+          "y": 900,
+          "width": 800,
+          "height": 100,
+          "duration": 8
+        },
+        {
+          "id": "qos197sn",
+          "type": "voice",
+          "text": "{{scene4_voiceOverText}}",
+          "voice": "en-US-JennyNeural",
+          "model": "azure"
+        }
+      ]
+    },
+    {
+      "id": "qg0byloy",
+      "comment": "Scene 5 - Community",
+      "duration": 8,
+      "elements": [
+        {
+          "id": "qmo2wkav",
+          "type": "image",
+          "prompt": "{{scene5_imagePrompt}}",
+          "model": "freepik-classic",
+          "resize": "cover",
+          "duration": 8
+        },
+        {
+          "id": "q43e8m2n",
+          "type": "text",
+          "text": "{{scene5_overlaidText}}",
+          "position": "bottom-left",
+          "x": 100,
+          "y": 900,
+          "width": 800,
+          "height": 100,
+          "duration": 8
+        },
+        {
+          "id": "qyin327g",
+          "type": "voice",
+          "text": "{{scene5_voiceOverText}}",
+          "voice": "en-US-JennyNeural",
+          "model": "azure"
+        }
+      ]
+    }
+  ],
+  "elements": []
+}

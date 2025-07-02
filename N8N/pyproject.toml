@@ -1,0 +1,190 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "longform-video-generator"
+version = "2.1.0"
+description = "Professional Bible Chapter Video Generation Platform with AI-powered content creation"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "LongForm Video Platform Team"},
+]
+maintainers = [
+    {name = "LongForm Video Platform Team"},
+]
+keywords = [
+    "video-generation",
+    "biblical-content", 
+    "automation",
+    "ai-content",
+    "n8n-workflows",
+    "json2video"
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Religion",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Multimedia :: Video",
+    "Topic :: Religion",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+requires-python = ">=3.7"
+
+# Core dependencies (minimal - most functionality uses built-ins)
+dependencies = [
+    "requests>=2.31.0",
+]
+
+[project.optional-dependencies]
+# Testing dependencies
+test = [
+    "pytest>=7.4.0",
+    "pytest-mock>=3.11.0", 
+    "pytest-cov>=4.1.0",
+    "jsonschema>=4.17.0",
+    "responses>=0.23.0",
+]
+
+# Development dependencies  
+dev = [
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+    "isort>=5.12.0",
+    "mypy>=1.5.0",
+    "pylint>=2.17.0",
+    "bandit>=1.7.0",
+]
+
+# Documentation dependencies
+docs = [
+    "sphinx>=7.0.0",
+    "sphinx-rtd-theme>=1.3.0", 
+    "markdown>=3.4.0",
+]
+
+# Full development environment
+full = [
+    "longform-video-generator[test,dev,docs]",
+    "ipython>=8.14.0",
+    "jupyter>=1.0.0",
+    "colorlog>=6.7.0",
+    "pyyaml>=6.0",
+    "tqdm>=4.65.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/longform-video/platform"
+Documentation = "https://github.com/longform-video/platform/docs"
+Repository = "https://github.com/longform-video/platform.git"
+Issues = "https://github.com/longform-video/platform/issues"
+Changelog = "https://github.com/longform-video/platform/blob/main/RELEASES/"
+
+[project.scripts]
+# Command line interfaces for the platform
+biblical-processor = "Bible_Chapter_Videos.biblical_text_processor:main"
+biblical-processor-v2 = "-p.biblical_text_processorv2.biblical_text_processor_v2:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["Bible_Chapter_Videos*", "-p*"]
+exclude = ["tests*", "Archive*", "RELEASES*"]
+
+[tool.black]
+line-length = 88
+target-version = ['py37', 'py38', 'py39', 'py310', 'py311']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+  | Archive
+  | RELEASES
+)/
+'''
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 88
+
+[tool.flake8]
+max-line-length = 88
+extend-ignore = ["E203", "W503"]
+exclude = [
+    ".git",
+    "__pycache__",
+    "build",
+    "dist",
+    "Archive",
+    "RELEASES",
+    ".venv",
+    ".tox"
+]
+
+[tool.mypy]
+python_version = "3.7"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false  # Set to false for gradual typing adoption
+exclude = [
+    "Archive/",
+    "RELEASES/",
+    "tests/",
+]
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-v --tb=short"
+testpaths = [
+    "Bible_Chapter_Videos/tests",
+    "tests",
+]
+python_files = [
+    "test_*.py",
+    "*_test.py",
+]
+
+[tool.coverage.run]
+source = [
+    "Bible_Chapter_Videos",
+    "-p",
+]
+omit = [
+    "*/tests/*",
+    "*/Archive/*", 
+    "*/RELEASES/*",
+    "setup.py",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod",
+] 

@@ -1,0 +1,130 @@
+# LongForm Video Generation Platform - Development Dependencies
+# Requirements for Development and Enhancement
+# Version: v2.1.0
+# Last Updated: June 27, 2025
+
+# =============================================================================
+# INCLUDE TESTING DEPENDENCIES
+# =============================================================================
+-r requirements-test.txt
+
+# =============================================================================
+# DEVELOPMENT TOOLS
+# =============================================================================
+
+# Enhanced REPL
+ipython>=8.14.0
+
+# Jupyter for development notebooks
+jupyter>=1.0.0
+
+# =============================================================================
+# CODE QUALITY & ANALYSIS
+# =============================================================================
+
+# Advanced linting
+pylint>=2.17.0
+
+# Security analysis
+bandit>=1.7.0
+
+# Complexity analysis
+radon>=6.0.0
+
+# Dead code detection
+vulture>=2.7.0
+
+# =============================================================================
+# DOCUMENTATION TOOLS
+# =============================================================================
+
+# Markdown processing and validation
+markdown>=3.4.0
+markdown-extensions>=0.1.0
+
+# Documentation generation
+sphinx>=7.0.0
+sphinx-rtd-theme>=1.3.0
+
+# =============================================================================
+# MONITORING & DEBUGGING
+# =============================================================================
+
+# Enhanced logging with colors
+colorlog>=6.7.0
+
+# Performance profiling
+memory-profiler>=0.61.0
+
+# Debugging tools
+pdb++>=0.10.0
+
+# =============================================================================
+# CONFIGURATION MANAGEMENT
+# =============================================================================
+
+# YAML configuration files
+pyyaml>=6.0
+
+# Environment variable management
+python-dotenv>=1.0.0
+
+# Configuration validation
+pydantic>=2.0.0
+
+# =============================================================================
+# API CLIENT ENHANCEMENTS
+# =============================================================================
+
+# HTTP client with advanced features
+httpx>=0.24.0
+
+# Async HTTP support
+aiohttp>=3.8.0
+
+# Rate limiting for API calls
+ratelimit>=2.2.0
+
+# =============================================================================
+# FILE FORMAT SUPPORT
+# =============================================================================
+
+# Excel file processing (for content management)
+openpyxl>=3.1.0
+
+# CSV handling improvements
+pandas>=2.0.0
+
+# =============================================================================
+# FUTURE DEVELOPMENT UTILITIES
+# =============================================================================
+
+# CLI development framework
+click>=8.1.0
+
+# Progress bars for batch processing
+tqdm>=4.65.0
+
+# String similarity for text matching
+fuzzywuzzy>=0.18.0
+python-levenshtein>=0.21.0
+
+# =============================================================================
+# INSTALLATION INSTRUCTIONS
+# =============================================================================
+#
+# Install full development environment:
+#   pip install -r requirements-dev.txt
+#
+# Install specific tool sets:
+#   pip install black flake8 mypy  # Code quality only
+#   pip install jupyter ipython    # Interactive development
+#   pip install sphinx markdown    # Documentation tools
+#
+# Development workflow:
+#   1. Code formatting: black .
+#   2. Linting: flake8 .
+#   3. Type checking: mypy .
+#   4. Testing: pytest
+#   5. Security: bandit -r .
+# 

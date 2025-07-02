@@ -1,0 +1,296 @@
+# LongForm Video Generation Platform - .gitignore
+# Protects sensitive information and excludes generated/temporary files
+
+# =============================================================================
+# SENSITIVE INFORMATION - CRITICAL TO EXCLUDE
+# =============================================================================
+
+# API Keys and Credentials
+*.env
+.env.*
+config/secrets/
+**/credentials.json
+**/api_keys/
+**/*_token.txt
+**/*_secret.txt
+**/*_key.txt
+
+# Personal configuration files
+**/personal_config/
+**/user_settings/
+.secrets/
+
+# =============================================================================
+# GENERATED CONTENT & OUTPUT FILES
+# =============================================================================
+
+# Video outputs (can be large)
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.webm
+
+# Audio files
+*.mp3
+*.wav
+*.m4a
+*.flac
+
+# Generated content
+**/temp/
+**/tmp/
+**/output_videos/
+**/generated_content/
+**/processed_videos/
+**/render_output/
+
+# Temporary processing files
+**/*_temp.*
+**/*_processing.*
+**/*_render.*
+
+# =============================================================================
+# DEVELOPMENT & BUILD FILES
+# =============================================================================
+
+# Python cache and bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+.env/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# =============================================================================
+# IDE AND EDITOR FILES
+# =============================================================================
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# PyCharm
+.idea/
+*.iml
+*.iws
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim/Neovim
+*.swp
+*.swo
+*~
+.netrwhist
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# =============================================================================
+# OPERATING SYSTEM FILES
+# =============================================================================
+
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# =============================================================================
+# APPLICATION-SPECIFIC FILES
+# =============================================================================
+
+# n8n specific
+**/n8n_data/
+**/n8n_cache/
+**/.n8n/
+
+# JSON2Video temporary files
+**/json2video_temp/
+**/template_cache/
+
+# ElevenLabs cache
+**/elevenlabs_cache/
+**/voice_cache/
+
+# Perplexity AI cache
+**/perplexity_cache/
+**/ai_responses/
+
+# Workflow backup files (keep originals only)
+**/*_backup_*.json
+**/*_temp_*.json
+**/*_test_*.json
+
+# =============================================================================
+# LOGS AND DEBUGGING
+# =============================================================================
+
+# Log files
+*.log
+logs/
+*.log.*
+log_*.txt
+
+# Debug files
+debug/
+*.debug
+*.trace
+
+# Error reports
+error_reports/
+crash_dumps/
+
+# =============================================================================
+# DOCUMENTATION BUILDS
+# =============================================================================
+
+# Documentation build outputs
+docs/_build/
+docs/build/
+site/
+.readthedocs.yml.bak
+
+# =============================================================================
+# PACKAGE MANAGERS
+# =============================================================================
+
+# npm
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.eslintcache
+
+# =============================================================================
+# MISC TEMPORARY FILES
+# =============================================================================
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+*.old
+*.orig
+
+# Archives (unless specifically needed)
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Lock files (can be regenerated)
+*.lock
+Pipfile.lock
+
+# =============================================================================
+# PROJECT-SPECIFIC EXCLUSIONS
+# =============================================================================
+
+# Large input files (keep samples only)
+Input_large_*
+**/Input_backup_*
+**/massive_text_*
+
+# Personal video projects
+**/personal_projects/
+**/private_content/
+
+# Experimental branches
+**/experimental/
+**/sandbox/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Configuration overrides
+config_override.*
+local_config.*
+
+# =============================================================================
+# NOTES FOR CONTRIBUTORS
+# =============================================================================
+
+# This .gitignore is designed to:
+# 1. Protect sensitive API keys and credentials
+# 2. Exclude large generated files (videos, audio)
+# 3. Prevent accidental commits of personal content
+# 4. Keep the repository clean and focused
+# 5. Ensure cross-platform compatibility
+#
+# If you need to track a file that's ignored, use:
+# git add -f filename
+#
+# To see what's being ignored in a directory:
+# git status --ignored 

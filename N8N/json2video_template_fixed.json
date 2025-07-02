@@ -1,0 +1,240 @@
+{
+  "comment": "Dynamic Spiritual Scenes Template - 16:9 Landscape FIXED",
+  "resolution": "full-hd",
+  "variables": {
+    "voiceModel": "azure",
+    "voiceID": "en-US-JennyNeural",
+    "scene1_imagePrompt": "A peaceful person in prayer",
+    "scene1_voiceOverText": "With all my mind, I reflect on teachings",
+    "scene1_overlaidText": "Mind - Reflection",
+    "scene2_imagePrompt": "A person in worship with raised hands",
+    "scene2_voiceOverText": "With all my body, I worship and serve",
+    "scene2_overlaidText": "Body - Worship",
+    "scene3_imagePrompt": "A serene spiritual surrender scene",
+    "scene3_voiceOverText": "With all my soul, I surrender completely",
+    "scene3_overlaidText": "Soul - Devotion",
+    "scene4_imagePrompt": "Harmonious integration of mind body soul",
+    "scene4_voiceOverText": "When aligned, I experience holistic devotion",
+    "scene4_overlaidText": "Integration",
+    "scene5_imagePrompt": "Community gathering in spiritual unity",
+    "scene5_voiceOverText": "Together we love with all our beings",
+    "scene5_overlaidText": "Community"
+  },
+  "scenes": [
+    {
+      "comment": "Scene 1 - Mind",
+      "duration": 8,
+      "background-color": "#1a1a2e",
+      "elements": [
+        {
+          "type": "image",
+          "src": {
+            "type": "ai",
+            "prompt": "{{scene1_imagePrompt}}",
+            "model": "flux-pro"
+          },
+          "left": "0%",
+          "top": "0%",
+          "width": "100%",
+          "height": "100%",
+          "fit": "cover",
+          "duration": 8
+        },
+        {
+          "type": "text",
+          "text": "{{scene1_overlaidText}}",
+          "left": "10%",
+          "top": "80%",
+          "width": "80%",
+          "height": "15%",
+          "font-size": "4vw",
+          "font-weight": "bold",
+          "color": "white",
+          "text-align": "center",
+          "background-color": "rgba(0,0,0,0.7)",
+          "border-radius": "10px",
+          "padding": "1vw",
+          "duration": 8
+        },
+        {
+          "type": "voice",
+          "text": "{{scene1_voiceOverText}}",
+          "voice": "{{voiceID}}",
+          "model": "{{voiceModel}}"
+        }
+      ]
+    },
+    {
+      "comment": "Scene 2 - Body",
+      "duration": 8,
+      "background-color": "#1a1a2e",
+      "elements": [
+        {
+          "type": "image",
+          "src": {
+            "type": "ai",
+            "prompt": "{{scene2_imagePrompt}}",
+            "model": "flux-pro"
+          },
+          "left": "0%",
+          "top": "0%",
+          "width": "100%",
+          "height": "100%",
+          "fit": "cover",
+          "duration": 8
+        },
+        {
+          "type": "text",
+          "text": "{{scene2_overlaidText}}",
+          "left": "10%",
+          "top": "80%",
+          "width": "80%",
+          "height": "15%",
+          "font-size": "4vw",
+          "font-weight": "bold",
+          "color": "white",
+          "text-align": "center",
+          "background-color": "rgba(0,0,0,0.7)",
+          "border-radius": "10px",
+          "padding": "1vw",
+          "duration": 8
+        },
+        {
+          "type": "voice",
+          "text": "{{scene2_voiceOverText}}",
+          "voice": "{{voiceID}}",
+          "model": "{{voiceModel}}"
+        }
+      ]
+    },
+    {
+      "comment": "Scene 3 - Soul",
+      "duration": 8,
+      "background-color": "#1a1a2e",
+      "elements": [
+        {
+          "type": "image",
+          "src": {
+            "type": "ai",
+            "prompt": "{{scene3_imagePrompt}}",
+            "model": "flux-pro"
+          },
+          "left": "0%",
+          "top": "0%",
+          "width": "100%",
+          "height": "100%",
+          "fit": "cover",
+          "duration": 8
+        },
+        {
+          "type": "text",
+          "text": "{{scene3_overlaidText}}",
+          "left": "10%",
+          "top": "80%",
+          "width": "80%",
+          "height": "15%",
+          "font-size": "4vw",
+          "font-weight": "bold",
+          "color": "white",
+          "text-align": "center",
+          "background-color": "rgba(0,0,0,0.7)",
+          "border-radius": "10px",
+          "padding": "1vw",
+          "duration": 8
+        },
+        {
+          "type": "voice",
+          "text": "{{scene3_voiceOverText}}",
+          "voice": "{{voiceID}}",
+          "model": "{{voiceModel}}"
+        }
+      ]
+    },
+    {
+      "comment": "Scene 4 - Integration",
+      "duration": 8,
+      "background-color": "#1a1a2e",
+      "elements": [
+        {
+          "type": "image",
+          "src": {
+            "type": "ai",
+            "prompt": "{{scene4_imagePrompt}}",
+            "model": "flux-pro"
+          },
+          "left": "0%",
+          "top": "0%",
+          "width": "100%",
+          "height": "100%",
+          "fit": "cover",
+          "duration": 8
+        },
+        {
+          "type": "text",
+          "text": "{{scene4_overlaidText}}",
+          "left": "10%",
+          "top": "80%",
+          "width": "80%",
+          "height": "15%",
+          "font-size": "4vw",
+          "font-weight": "bold",
+          "color": "white",
+          "text-align": "center",
+          "background-color": "rgba(0,0,0,0.7)",
+          "border-radius": "10px",
+          "padding": "1vw",
+          "duration": 8
+        },
+        {
+          "type": "voice",
+          "text": "{{scene4_voiceOverText}}",
+          "voice": "{{voiceID}}",
+          "model": "{{voiceModel}}"
+        }
+      ]
+    },
+    {
+      "comment": "Scene 5 - Community",
+      "duration": 8,
+      "background-color": "#1a1a2e",
+      "elements": [
+        {
+          "type": "image",
+          "src": {
+            "type": "ai",
+            "prompt": "{{scene5_imagePrompt}}",
+            "model": "flux-pro"
+          },
+          "left": "0%",
+          "top": "0%",
+          "width": "100%",
+          "height": "100%",
+          "fit": "cover",
+          "duration": 8
+        },
+        {
+          "type": "text",
+          "text": "{{scene5_overlaidText}}",
+          "left": "10%",
+          "top": "80%",
+          "width": "80%",
+          "height": "15%",
+          "font-size": "4vw",
+          "font-weight": "bold",
+          "color": "white",
+          "text-align": "center",
+          "background-color": "rgba(0,0,0,0.7)",
+          "border-radius": "10px",
+          "padding": "1vw",
+          "duration": 8
+        },
+        {
+          "type": "voice",
+          "text": "{{scene5_voiceOverText}}",
+          "voice": "{{voiceID}}",
+          "model": "{{voiceModel}}"
+        }
+      ]
+    }
+  ]
+} 

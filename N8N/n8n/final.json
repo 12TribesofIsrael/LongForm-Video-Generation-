@@ -1,0 +1,404 @@
+{
+  "name": "Final Spiritual Video Generator",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [260, 300],
+      "id": "manual-trigger-final",
+      "name": "Start Workflow"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "input-content-final",
+              "name": "inputText",
+              "value": "How I love the Most High with all my mind, body, and soul. With all my mind, I reflect on the teachings and wisdom of the Most High. In quiet moments of prayer, I seek guidance and understanding. My thoughts are consumed with His love and grace, and I meditate on His word day and night.\n\nWith all my body, I worship and serve the Most High. Through active movement, dance, and physical expressions of praise, I honor Him with my entire being. My body becomes a vessel for His glory, and every action I take is dedicated to serving His purpose.\n\nWith all my soul, I surrender completely to the Most High. My deepest emotions, my innermost being, and my very essence are devoted to Him. In moments of worship, my soul connects with the divine, and I experience a profound sense of peace and fulfillment.\n\nWhen my mind, body, and soul are aligned, I experience a deep and holistic devotion to the Most High. This integration brings balance and harmony to my life. Together with my community, we love the Most High with all our minds, bodies, and souls. Our shared love strengthens our faith and bonds us together.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [480, 300],
+      "id": "input-text-final",
+      "name": "Input Text Content"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.perplexity.ai/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "raw",
+        "body": "={{ JSON.stringify({\n  model: \"llama-3.1-sonar-large-128k-online\",\n  messages: [{\n    role: \"user\",\n    content: \"Create exactly 5 scenes for a spiritual video. Each scene needs: title, voiceoverText (20+ words), imagePrompt (detailed, appropriate). Return as JSON: {\\\"scenes\\\": [{\\\"title\\\": \\\"\\\", \\\"voiceoverText\\\": \\\"\\\", \\\"imagePrompt\\\": \\\"\\\"}]}. Topic: \" + $('Input Text Content').item.json.inputText\n  }],\n  max_tokens: 1500,\n  temperature: 0.7\n}) }}",
+        "options": {
+          "headers": {
+            "Content-Type": "application/json"
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [700, 300],
+      "id": "perplexity-final",
+      "name": "Perplexity AI Scene Generator",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "PZ1kkz2SyVP9vn5c",
+          "name": "Perplexity"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Parse Perplexity response and format for NEW 16:9 TEMPLATE\nconst response = items[0].json.choices[0].message.content;\n\n// Extract JSON from response\nlet sceneData;\ntry {\n  const jsonMatch = response.match(/\\{[\\s\\S]*\\}/);\n  sceneData = jsonMatch ? JSON.parse(jsonMatch[0]) : JSON.parse(response);\n} catch (error) {\n  throw new Error('Failed to parse Perplexity response: ' + error.message);\n}\n\n// Get scenes array\nlet scenes = sceneData.scenes || [];\n\nif (scenes.length === 0) {\n  throw new Error('No scenes found in response. Raw response: ' + response);\n}\n\n// Function to clean text for JSON safety\nfunction cleanText(text) {\n  if (!text) return '';\n  return text\n    .replace(/\"/g, \"'\")  // Replace double quotes with single quotes\n    .replace(/\\n/g, \" \")  // Replace newlines with spaces\n    .replace(/\\r/g, \" \")  // Replace carriage returns\n    .replace(/\\t/g, \" \")  // Replace tabs\n    .replace(/[\\u0000-\\u001F\\u007F-\\u009F]/g, \"\")  // Remove control characters\n    .trim();\n}\n\n// Format for NEW 16:9 TEMPLATE - create individual scene variables\nconst result = {\n  totalScenes: scenes.length,\n  videoTitle: \"Spiritual Journey - AI Generated\"\n};\n\n// Add each scene as individual variables for the new template\nscenes.forEach((scene, index) => {\n  const sceneNum = index + 1;\n  result[`scene${sceneNum}_imagePrompt`] = cleanText(scene.imagePrompt || scene.imageDescription || `A meaningful spiritual visual for scene ${sceneNum}`);\n  result[`scene${sceneNum}_voiceOverText`] = cleanText(scene.voiceoverText || scene.voiceOverText || scene.description || `Scene ${sceneNum} spiritual content`);\n  result[`scene${sceneNum}_overlaidText`] = cleanText(scene.title || `Spiritual Scene ${sceneNum}`);\n});\n\n// Debug info\nresult.originalScenes = scenes;\nresult.debugInfo = {\n  originalResponseLength: response.length,\n  parsedScenesCount: scenes.length,\n  timestamp: new Date().toISOString()\n};\n\nreturn result;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [920, 300],
+      "id": "format-scenes-final",
+      "name": "Format for 16:9 Template"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.json2video.com/v2/movies",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"template\": \"s4CDODC4eDeMTkbogbj2\",\n  \"variables\": {\n    \"scene1_imagePrompt\": \"{{ $('Format for 16:9 Template').item.json.scene1_imagePrompt }}\",\n    \"scene1_voiceOverText\": \"{{ $('Format for 16:9 Template').item.json.scene1_voiceOverText }}\",\n    \"scene1_overlaidText\": \"{{ $('Format for 16:9 Template').item.json.scene1_overlaidText }}\",\n    \"scene2_imagePrompt\": \"{{ $('Format for 16:9 Template').item.json.scene2_imagePrompt }}\",\n    \"scene2_voiceOverText\": \"{{ $('Format for 16:9 Template').item.json.scene2_voiceOverText }}\",\n    \"scene2_overlaidText\": \"{{ $('Format for 16:9 Template').item.json.scene2_overlaidText }}\",\n    \"scene3_imagePrompt\": \"{{ $('Format for 16:9 Template').item.json.scene3_imagePrompt }}\",\n    \"scene3_voiceOverText\": \"{{ $('Format for 16:9 Template').item.json.scene3_voiceOverText }}\",\n    \"scene3_overlaidText\": \"{{ $('Format for 16:9 Template').item.json.scene3_overlaidText }}\",\n    \"scene4_imagePrompt\": \"{{ $('Format for 16:9 Template').item.json.scene4_imagePrompt }}\",\n    \"scene4_voiceOverText\": \"{{ $('Format for 16:9 Template').item.json.scene4_voiceOverText }}\",\n    \"scene4_overlaidText\": \"{{ $('Format for 16:9 Template').item.json.scene4_overlaidText }}\",\n    \"scene5_imagePrompt\": \"{{ $('Format for 16:9 Template').item.json.scene5_imagePrompt }}\",\n    \"scene5_voiceOverText\": \"{{ $('Format for 16:9 Template').item.json.scene5_voiceOverText }}\",\n    \"scene5_overlaidText\": \"{{ $('Format for 16:9 Template').item.json.scene5_overlaidText }}\"\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1140, 300],
+      "id": "generate-video-final",
+      "name": "Generate 16:9 Spiritual Video",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "pKpJaJTXBg3wLGgY",
+          "name": "Json2Video"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://api.json2video.com/v2/movies",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "project",
+              "value": "={{ $('Generate 16:9 Spiritual Video').item.json.project }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1360, 300],
+      "id": "check-status-final",
+      "name": "Check Video Status",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "pKpJaJTXBg3wLGgY",
+          "name": "Json2Video"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "video-complete",
+                    "leftValue": "={{ $json.movie.status }}",
+                    "rightValue": "done",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Video Complete"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.movie.status }}",
+                    "rightValue": "error",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "video-error"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Video Error"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 1
+                },
+                "conditions": [
+                  {
+                    "id": "video-processing",
+                    "leftValue": "={{ $json.movie.status }}",
+                    "rightValue": "running",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Still Processing"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [1580, 300],
+      "id": "status-router-final",
+      "name": "Video Status Router"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "video-url-final",
+              "name": "finalVideoUrl",
+              "value": "={{ $json.movie.url }}",
+              "type": "string"
+            },
+            {
+              "id": "video-duration-final",
+              "name": "videoDuration",
+              "value": "={{ $json.movie.duration }}",
+              "type": "number"
+            },
+            {
+              "id": "video-size-final",
+              "name": "videoSize",
+              "value": "={{ $json.movie.size }}",
+              "type": "number"
+            },
+            {
+              "id": "completion-time-final",
+              "name": "completedAt",
+              "value": "={{ $json.movie.ended_at }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [1800, 200],
+      "id": "final-video-output",
+      "name": "Final Video Output"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "error-message-final",
+              "name": "errorMessage",
+              "value": "={{ $json.movie.message }}",
+              "type": "string"
+            },
+            {
+              "id": "error-status-final",
+              "name": "errorStatus",
+              "value": "{{ $json.movie.status }}",
+              "type": "string"
+            },
+            {
+              "id": "error-time-final",
+              "name": "errorTime",
+              "value": "={{ new Date().toISOString() }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [1800, 400],
+      "id": "error-output-final",
+      "name": "Error Output"
+    },
+    {
+      "parameters": {
+        "amount": 15,
+        "unit": "seconds"
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [1800, 600],
+      "id": "wait-15-seconds-final",
+      "name": "Wait 15 Seconds"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Start Workflow": {
+      "main": [
+        [
+          {
+            "node": "Input Text Content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Input Text Content": {
+      "main": [
+        [
+          {
+            "node": "Perplexity AI Scene Generator",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Perplexity AI Scene Generator": {
+      "main": [
+        [
+          {
+            "node": "Format for 16:9 Template",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format for 16:9 Template": {
+      "main": [
+        [
+          {
+            "node": "Generate 16:9 Spiritual Video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate 16:9 Spiritual Video": {
+      "main": [
+        [
+          {
+            "node": "Check Video Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Video Status": {
+      "main": [
+        [
+          {
+            "node": "Video Status Router",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Video Status Router": {
+      "main": [
+        [
+          {
+            "node": "Final Video Output",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Error Output",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait 15 Seconds",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 15 Seconds": {
+      "main": [
+        [
+          {
+            "node": "Check Video Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "final-spiritual-video-generator-v1",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "final-spiritual-video-workflow"
+  },
+  "id": "final-spiritual-video-generator",
+  "tags": []
+} 
