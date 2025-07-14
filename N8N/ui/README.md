@@ -1,140 +1,185 @@
-# 🎬 Biblical Video Generation MVP - Production Ready
+# 🎬 LongForm Video Generation - MVP Frontend
 
-**Professional AI-Powered Biblical Video Creation with Authentic Hebrew Israelite Representation**
+[![React](https://img.shields.io/badge/React-18-blue)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.0-blue)](https://tailwindcss.com/)
+[![Production Ready](https://img.shields.io/badge/Status-Production%20Ready-green)](https://github.com)
+[![MVP Complete](https://img.shields.io/badge/MVP-95%25%20Complete-brightgreen)](https://github.com)
 
-[![Production Ready](https://img.shields.io/badge/Status-Production%20Ready-green.svg)](https://github.com/yourusername/LongForm-Video-Generation)
-[![React](https://img.shields.io/badge/React-18.3.1-blue.svg)](https://reactjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.5.3-blue.svg)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.4.1-blue.svg)](https://tailwindcss.com/)
+## 🚀 **Production-Ready Biblical Video Generation Platform**
 
-## 🎉 **95% COMPLETE - Ready for Production**
+A comprehensive React TypeScript application for generating professional biblical videos with authentic Hebrew Israelite representation. Seamlessly integrated with n8n workflows, Perplexity AI, ElevenLabs, and JSON2Video.
 
-This MVP frontend provides a complete, professional interface for generating biblical videos with AI-powered scene generation, voice synthesis, and video rendering. Fully integrated with n8n workflows and featuring authentic Hebrew Israelite representation.
+---
 
 ## ✨ **Key Features**
 
 ### 🤖 **AI-Powered Content Generation**
-- **Perplexity AI Integration**: Latest models (sonar-pro, sonar-reasoning-pro, sonar-deep-research)
-- **Real-time API Testing**: Live connection validation with status indicators
-- **Dynamic Scene Generation**: Automatic 20-scene optimization for 11-15 minute videos
-- **Cultural Authenticity**: Hebrew Israelite representation throughout
+- **Perplexity AI Integration**: Current models supported
+  - `sonar-pro` (flagship model - **RECOMMENDED**)
+  - `sonar-reasoning-pro` (advanced reasoning)
+  - `sonar-deep-research` (comprehensive research)
+  - `sonar-small` (efficient for simple queries)
+  - `sonar-medium` (balanced performance)
+- **Authentication**: Bearer token format (`Bearer pplx-YOUR_API_KEY`)
+- **Real-time Testing**: Connection status indicators (🟢🔴🟡⚪)
+- **Cost Optimization**: $0.15 per video with sonar-pro model
 
-### 💰 **Real-Time Cost Calculation**
-- **Dynamic Pricing**: Updates based on content length
-- **Service Breakdown**: Perplexity AI ($0.15) + ElevenLabs ($0.50-$2.50) + JSON2Video ($1.00)
-- **Total Cost**: ~$3.65 per professional video
-- **Professional Display**: Beautiful cost breakdown cards
+### 🎙️ **Professional Voice Synthesis**
+- **ElevenLabs Integration**: High-quality voice generation
+- **Multiple Voice Options**: Authentic narration styles
+- **Cost Control**: $0.50-$2.50 per video (length-dependent)
+- **Real-time Preview**: Voice testing capabilities
+
+### 🎥 **Advanced Video Production**
+- **JSON2Video Integration**: Professional video rendering
+- **20-Scene Optimization**: Perfect for 11-15 minute videos
+- **Ken Burns Effects**: Cinematic image animations
+- **Fixed Cost**: $1.00 per video
 
 ### 🔗 **n8n Workflow Integration**
-- **Webhook Configuration**: Easy setup with your n8n instance
-- **Connection Testing**: Real-time status indicators (🟢🔴🟡⚪)
-- **Advanced Settings**: Status and download endpoints
-- **Production Ready**: Actual API calls with comprehensive error handling
+- **Real-time Connection**: Live webhook testing
+- **Status Monitoring**: Visual connection indicators
+- **Error Recovery**: Automatic retry mechanisms
+- **Progress Tracking**: 6-stage generation process
 
-### 🎨 **Professional UI/UX**
-- **Modern Design**: Clean, responsive interface with Tailwind CSS
-- **Real-time Updates**: All metrics update as you type
-- **Progress Tracking**: 6-stage generation process visualization
-- **File Import**: Upload text files for processing
-- **Template System**: Save and load configuration presets
+### 🎨 **Modern User Interface**
+- **React 18 + TypeScript**: Type-safe, modern development
+- **Tailwind CSS**: Responsive, professional design
+- **Real-time Updates**: Live progress tracking
+- **Mobile Optimized**: Works on all devices
 
-## 🚀 **Quick Start**
+---
+
+## 💰 **Cost Structure**
+
+| Service | Cost | Purpose |
+|---------|------|---------|
+| **Perplexity AI** | $0.15 | Scene generation with sonar-pro model |
+| **ElevenLabs** | $0.50-$2.50 | Voice synthesis (scales with content) |
+| **JSON2Video** | $1.00 | Video rendering with effects |
+| **Total** | **$1.65-$3.65** | **Complete 11-15 minute biblical video** |
+
+---
+
+## 🛠️ **Installation & Setup**
 
 ### **Prerequisites**
-- Node.js 16+ and npm
-- n8n instance with biblical video generation workflow
-- API keys for Perplexity AI, ElevenLabs, and JSON2Video
+- Node.js 18+ and npm
+- n8n instance with biblical video workflow
+- API keys for Perplexity AI, ElevenLabs, JSON2Video
 
-### **Installation**
+### **Quick Start**
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/LongForm-Video-Generation.git
-
-# Navigate to UI directory
-cd LongForm-Video-Generation/N8N/ui
+git clone <repository-url>
+cd N8N/ui
 
 # Install dependencies
 npm install
 
 # Start development server
 npm run dev
-```
 
-### **Production Build**
-
-```bash
-# Create production build
+# Build for production
 npm run build
-
-# Preview production build
-npm run preview
 ```
 
-## 🔧 **Configuration**
+### **Environment Configuration**
 
-### **n8n Integration**
-1. Open the application in your browser
-2. Navigate to "Generation Controls"
-3. Enter your n8n webhook URL
-4. Click "Test Connection" to verify
-5. Configure API keys in "Advanced Settings"
+Create a `.env` file:
+```env
+VITE_N8N_WEBHOOK_URL=your_n8n_webhook_url
+VITE_PERPLEXITY_API_KEY=pplx-your_api_key_here
+```
 
-### **API Keys Setup**
-1. **Perplexity AI**: Get your API key from [Perplexity AI](https://www.perplexity.ai/)
-2. **ElevenLabs**: Get your API key from [ElevenLabs](https://elevenlabs.io/)
-3. **JSON2Video**: Get your API key from [JSON2Video](https://json2video.com/)
+---
 
-## 📊 **User Workflow**
+## 🏗️ **Technical Architecture**
 
-1. **📝 Input Content**: Paste or upload biblical text
-2. **🎭 Select Style**: Choose Hebrew Israelite representation type
-3. **🎵 Configure Voice**: Select ElevenLabs voice and settings
-4. **🎨 Set Visuals**: Choose biblical realism or artistic styles
-5. **🔗 Connect n8n**: Enter webhook URL and test connection
-6. **🚀 Generate**: Create professional 11-15 minute videos
-7. **📥 Download**: Receive high-quality output with authentic representation
+### **Frontend Stack**
+- **React 18**: Modern React with hooks and context
+- **TypeScript**: Full type safety and developer experience
+- **Tailwind CSS**: Utility-first styling framework
+- **Vite**: Fast build tool and development server
+- **Lucide React**: Professional icon library
 
-## 💡 **Core Components**
+### **API Integrations**
+- **Perplexity AI**: Real API calls with proper authentication
+- **n8n Webhook**: Complete integration with POST requests
+- **ElevenLabs**: Voice synthesis (via n8n)
+- **JSON2Video**: Video rendering (via n8n)
 
-### **AdvancedSettings.tsx**
-- Perplexity AI model configuration
-- API key management with security
-- Real connection testing
+### **Key Components**
+```
+src/
+├── components/
+│   ├── AdvancedSettings.tsx      # Perplexity AI configuration
+│   ├── GenerationControls.tsx    # n8n webhook integration
+│   ├── VisualSettings.tsx        # 20-scene optimization
+│   ├── ProgressTracker.tsx       # Generation progress
+│   ├── TextInput.tsx             # Content input
+│   ├── VoiceSettings.tsx         # ElevenLabs configuration
+│   └── ContentTypeSelector.tsx   # Content type selection
+├── types/
+│   └── index.ts                  # TypeScript definitions
+└── App.tsx                       # Main application
+```
 
-### **GenerationControls.tsx**
-- n8n webhook integration
-- Real-time cost calculation
-- File import and template system
+---
 
-### **VisualSettings.tsx**
-- 20-scene optimization display
-- Visual style configuration
-- Caption and quality settings
+## 🎯 **User Workflow**
 
-### **ProgressTracker.tsx**
-- 6-stage generation process
-- Real-time status updates
-- Professional loading states
+1. **📝 Input Biblical Text**: Paste or upload biblical content
+2. **🎭 Select Content Type**: Choose Hebrew Israelite representation style
+3. **🎙️ Configure Voice**: Select ElevenLabs voice and settings
+4. **🎨 Set Visual Style**: Choose biblical realism or other styles
+5. **🔗 Configure n8n**: Enter webhook URL and test connection
+6. **🚀 Generate Video**: Click "Generate with n8n" for production
+7. **📊 Track Progress**: Monitor 6-stage generation process
+8. **⬇️ Download**: Receive completed video with authentic representation
 
-## 🏗️ **Technical Stack**
+---
 
-- **Frontend**: React 18 + TypeScript + Tailwind CSS
-- **Build Tool**: Vite for fast development and builds
-- **Icons**: Lucide React for professional iconography
-- **Styling**: Responsive design with modern CSS
-- **API Integration**: Real API calls with error handling
+## 🔧 **API Configuration**
 
-## 💰 **Cost Structure**
+### **Perplexity AI Setup**
+```typescript
+// Authentication format
+const headers = {
+  'Authorization': 'Bearer pplx-your_api_key_here',
+  'Content-Type': 'application/json'
+};
 
-| Service | Cost Range | Purpose |
-|---------|------------|---------|
-| **Perplexity AI** | $0.15 | Scene generation and biblical analysis |
-| **ElevenLabs** | $0.50-$2.50 | Professional voice synthesis (scales with length) |
-| **JSON2Video** | $1.00 | Video rendering with Ken Burns effects |
-| **Total** | **~$3.65** | **Complete professional biblical video** |
+// Request payload
+const payload = {
+  model: 'sonar-pro',
+  messages: [...],
+  max_tokens: 5000,
+  temperature: 0.7
+};
+```
 
-## 🎯 **Features Overview**
+### **n8n Webhook Integration**
+```typescript
+// Webhook configuration
+const webhookConfig = {
+  url: 'https://your-n8n-instance.com/webhook/biblical-video',
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  payload: {
+    inputText: 'biblical content',
+    settings: {...}
+  }
+};
+```
+
+---
+
+## 📊 **Features Overview**
 
 ### **Content Processing**
 - ✅ Real-time word count and analysis
@@ -142,9 +187,9 @@ npm run preview
 - ✅ Biblical text optimization with Perplexity AI
 - ✅ Hebrew Israelite cultural authenticity
 
-### **Voice & Audio**
-- ✅ Professional ElevenLabs voice synthesis
-- ✅ Adjustable speed and tone controls
+### **Voice Synthesis**
+- ✅ Professional ElevenLabs voices
+- ✅ Adjustable speed and tone
 - ✅ High-quality audio generation
 - ✅ Cultural representation in narration
 
@@ -160,77 +205,92 @@ npm run preview
 - ✅ High-definition output
 - ✅ Ready for social media or educational use
 
-## 🔐 **Security Features**
-
-- ✅ Secure API key handling
-- ✅ No sensitive data in localStorage
-- ✅ Proper CORS handling for API calls
-- ✅ Input validation and sanitization
-
-## 📱 **Responsive Design**
-
-- ✅ Mobile-first responsive design
-- ✅ Tablet and desktop optimization
-- ✅ Touch-friendly interface
-- ✅ Accessible navigation
+---
 
 ## 🚀 **Production Deployment**
 
-### **Environment Setup**
-1. Build the production version: `npm run build`
-2. Deploy the `dist/` folder to your hosting service
-3. Configure environment variables for API endpoints
-4. Set up your n8n instance with the biblical video workflow
+### **Build for Production**
+```bash
+npm run build
+```
 
-### **Recommended Hosting**
-- **Netlify**: Easy deployment with Git integration
-- **Vercel**: Optimized for React applications
-- **AWS S3 + CloudFront**: Scalable static hosting
-- **GitHub Pages**: Free hosting for open source projects
+### **Deploy to Netlify**
+```bash
+# Install Netlify CLI
+npm install -g netlify-cli
 
-## 📈 **Performance Metrics**
+# Deploy to Netlify
+netlify deploy --prod --dir=dist
+```
 
-- ✅ **95% Feature Complete**
-- ✅ **Production-Ready Code Quality**
-- ✅ **Real API Integrations Working**
-- ✅ **Professional UI/UX Design**
-- ✅ **Comprehensive Error Handling**
-- ✅ **Full n8n Workflow Integration**
-
-## 🤝 **Contributing**
-
-We welcome contributions! Please see our [Contributing Guidelines](../CONTRIBUTING.md) for details.
-
-### **Development Setup**
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Make your changes and test thoroughly
-4. Commit your changes: `git commit -m 'Add amazing feature'`
-5. Push to the branch: `git push origin feature/amazing-feature`
-6. Open a Pull Request
-
-## 📝 **License**
-
-This project is licensed under the MIT License - see the [LICENSE](../LICENSE) file for details.
-
-## 🙏 **Acknowledgments**
-
-- **Perplexity AI** for advanced language model capabilities
-- **ElevenLabs** for professional voice synthesis
-- **JSON2Video** for high-quality video rendering
-- **n8n** for powerful workflow automation
-- **React Team** for the excellent frontend framework
-- **Tailwind CSS** for beautiful, responsive styling
-
-## 📞 **Support**
-
-- 📧 **Email**: support@biblicalvideos.com
-- 💬 **Discord**: [Join our community](https://discord.gg/biblical-videos)
-- 📖 **Documentation**: [Full documentation](../docs/)
-- 🐛 **Issues**: [GitHub Issues](https://github.com/yourusername/LongForm-Video-Generation/issues)
+### **Environment Variables**
+Configure in your hosting platform:
+- `VITE_N8N_WEBHOOK_URL`: Your n8n webhook endpoint
+- `VITE_PERPLEXITY_API_KEY`: Your Perplexity AI API key
 
 ---
 
-**🏆 Built with ❤️ for authentic Hebrew Israelite biblical representation**
+## 🎬 **Cultural Authenticity**
 
-*This MVP represents a complete, production-ready solution for generating professional biblical videos with AI-powered content creation and authentic cultural representation.* 
+### **Hebrew Israelite Representation**
+- ✅ **Authentic Cultural Elements**: Proper representation in visuals
+- ✅ **Biblical Accuracy**: Scholarly research integration
+- ✅ **Visual Authenticity**: Culturally appropriate imagery
+- ✅ **Narrative Style**: Engaging storytelling approach
+
+### **Quality Assurance**
+- ✅ **Cultural Sensitivity**: Respectful content generation
+- ✅ **Historical Accuracy**: Proper biblical context
+- ✅ **Visual Consistency**: Cohesive artistic style
+- ✅ **Narrative Flow**: Engaging story progression
+
+---
+
+## 🔐 **Security & Best Practices**
+
+### **API Security**
+- ✅ API keys handled securely
+- ✅ No sensitive data in localStorage
+- ✅ Proper CORS handling
+- ✅ Environment variable protection
+
+### **Error Handling**
+- ✅ Comprehensive error messages
+- ✅ Graceful degradation
+- ✅ User-friendly feedback
+- ✅ Automatic retry mechanisms
+
+---
+
+## 📈 **Success Metrics**
+
+- **✅ 95% Production Ready**
+- **✅ All APIs Working**
+- **✅ Real-time Cost Tracking**
+- **✅ Professional UI/UX**
+- **✅ Comprehensive Documentation**
+- **✅ Full n8n Integration**
+
+---
+
+## 🤝 **Contributing**
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+---
+
+## 📞 **Support**
+
+For technical support or questions:
+- Check the documentation
+- Review the MVP Integration Guide
+- Test API connections
+- Verify n8n workflow setup
+
+---
+
+**🏆 Production-Ready Biblical Video Generation Platform with Authentic Hebrew Israelite Representation!** 
