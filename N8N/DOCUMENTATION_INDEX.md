@@ -21,6 +21,12 @@
 | **Biblical Text Processor V2** | [-p/biblical_text_processorv2/MAIN_README.md](-p/biblical_text_processorv2/MAIN_README.md) | Multi-section processing |
 | **Automation Scripts** | [AUTOMATION_SCRIPTS_GUIDE.md](AUTOMATION_SCRIPTS_GUIDE.md) | Complete scripting reference |
 
+### **🖥️ Frontend Interface - Modern UI**
+| Interface | Documentation | Purpose |
+|-----------|---------------|---------|
+| **V1 Frontend** | [ui/V1/README.md](ui/V1/README.md) | Professional React TypeScript interface |
+| **Live Demo** | [https://superb-brioche-7a2e90.netlify.app/](https://superb-brioche-7a2e90.netlify.app/) | Try the interface online |
+
 ---
 
 ## 🎬 **Production System Documentation**

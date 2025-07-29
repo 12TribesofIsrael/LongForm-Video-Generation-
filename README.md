@@ -1,8 +1,8 @@
 # 🎬 **LongForm Video Generation Platform**
 
-**🔄 Last Updated**: June 30, 2025
+**🔄 Last Updated**: July 28, 2025
 
-**🎯 Professional Biblical Video Creation with AI Automation**
+**🎯 Professional Biblical Video Creation with AI Automation & Modern Frontend**
 
 [![Production Ready](https://img.shields.io/badge/Production-Ready-brightgreen)](N8N/RELEASES/v5.1.0/)
 [![Version](https://img.shields.io/badge/Version-v5.1.0-blue)](N8N/RELEASES/v5.1.0/RELEASE_NOTES_v5.1.0.md)
@@ -70,6 +70,12 @@ Download from: N8N/RELEASES/v5.1.0/
 - **Purpose**: Complete video generation system
 - **Features**: n8n workflows, JSON2Video templates, ElevenLabs integration
 
+### **🖥️ Modern Frontend Interface**
+- **V1 Frontend**: [N8N/ui/V1/](N8N/ui/V1/) - Professional React TypeScript interface
+- **Features**: Real-time processing, cost calculations, template management, n8n integration
+- **Tech Stack**: React 18, TypeScript, Tailwind CSS, Vite
+- **Live Demo**: [https://superb-brioche-7a2e90.netlify.app/](https://superb-brioche-7a2e90.netlify.app/)
+
 ### **📝 Text Processing Tools**
 - **V1 Processor**: [N8N/Bible_Chapter_Videos/](N8N/Bible_Chapter_Videos/) - Single 1000-word processing
 - **V2 Processor**: [N8N/-p/biblical_text_processorv2/](N8N/-p/biblical_text_processorv2/) - Smart single/multi-section processing (auto-optimizes for any text size, ~4-5 min per 1000 words, 214 WPM)
@@ -128,10 +134,11 @@ This repository contains 48+ documentation files organized for different user ty
 ## 🚀 **Getting Started**
 
 ### **🎯 Quick Start (30 minutes)**
-1. **Navigate to Main Platform**: [N8N/](N8N/)
-2. **Read Platform Overview**: [N8N/README.md](N8N/README.md)
-3. **Follow Setup Guide**: [N8N/PRODUCTION_USER_GUIDE.md](N8N/PRODUCTION_USER_GUIDE.md)
-4. **Download Files**: [N8N/RELEASES/v5.1.0/](N8N/RELEASES/v5.1.0/)
+1. **Try the Live Demo**: [V1 Frontend Demo](https://superb-brioche-7a2e90.netlify.app/)
+2. **Navigate to Main Platform**: [N8N/](N8N/)
+3. **Read Platform Overview**: [N8N/README.md](N8N/README.md)
+4. **Follow Setup Guide**: [N8N/PRODUCTION_USER_GUIDE.md](N8N/PRODUCTION_USER_GUIDE.md)
+5. **Download Files**: [N8N/RELEASES/v5.1.0/](N8N/RELEASES/v5.1.0/)
 
 ### **📖 Need Help?**
 - **Complete Documentation**: [N8N/DOCUMENTATION_INDEX.md](N8N/DOCUMENTATION_INDEX.md)
