@@ -1,296 +1,227 @@
-# 🎬 LongForm Video Generation - MVP Frontend
+# 🎬 BibleVideoAI - UI Versions
 
-[![React](https://img.shields.io/badge/React-18-blue)](https://reactjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.0-blue)](https://tailwindcss.com/)
-[![Production Ready](https://img.shields.io/badge/Status-Production%20Ready-green)](https://github.com)
-[![MVP Complete](https://img.shields.io/badge/MVP-95%25%20Complete-brightgreen)](https://github.com)
-
-## 🚀 **Production-Ready Biblical Video Generation Platform**
-
-A comprehensive React TypeScript application for generating professional biblical videos with authentic Hebrew Israelite representation. Seamlessly integrated with n8n workflows, Perplexity AI, ElevenLabs, and JSON2Video.
+**📋 Project**: BibleVideoAI Frontend  
+**🔄 Last Updated**: July 28, 2025  
+**🎯 Status**: Multi-Version Development  
+**🚀 V0 Status**: ✅ Running Successfully
 
 ---
 
-## ✨ **Key Features**
+## 📁 **Version Structure**
 
-### 🤖 **AI-Powered Content Generation**
-- **Perplexity AI Integration**: Current models supported
-  - `sonar-pro` (flagship model - **RECOMMENDED**)
-  - `sonar-reasoning-pro` (advanced reasoning)
-  - `sonar-deep-research` (comprehensive research)
-  - `sonar-small` (efficient for simple queries)
-  - `sonar-medium` (balanced performance)
-- **Authentication**: Bearer token format (`Bearer pplx-YOUR_API_KEY`)
-- **Real-time Testing**: Connection status indicators (🟢🔴🟡⚪)
-- **Cost Optimization**: $0.15 per video with sonar-pro model
+This UI directory contains multiple versions of the BibleVideoAI frontend, each with different designs and feature sets.
 
-### 🎙️ **Professional Voice Synthesis**
-- **ElevenLabs Integration**: High-quality voice generation
-- **Multiple Voice Options**: Authentic narration styles
-- **Cost Control**: $0.50-$2.50 per video (length-dependent)
-- **Real-time Preview**: Voice testing capabilities
+### **📂 Available Versions**
 
-### 🎥 **Advanced Video Production**
-- **JSON2Video Integration**: Professional video rendering
-- **20-Scene Optimization**: Perfect for 11-15 minute videos
-- **Ken Burns Effects**: Cinematic image animations
-- **Fixed Cost**: $1.00 per video
+#### **🎯 V0** - Complete SaaS Frontend ✅
+- **Status**: ✅ Complete & Production Ready
+- **Design**: Bolt.AI UI Design Prompt Implementation
+- **Features**: Full SaaS platform with advanced video generation
+- **Location**: `./V0/`
+- **Server**: ✅ Running on `http://localhost:5173/`
 
-### 🔗 **n8n Workflow Integration**
-- **Real-time Connection**: Live webhook testing
-- **Status Monitoring**: Visual connection indicators
-- **Error Recovery**: Automatic retry mechanisms
-- **Progress Tracking**: 6-stage generation process
-
-### 🎨 **Modern User Interface**
-- **React 18 + TypeScript**: Type-safe, modern development
-- **Tailwind CSS**: Responsive, professional design
-- **Real-time Updates**: Live progress tracking
-- **Mobile Optimized**: Works on all devices
+#### **🎯 V1** - Alternative Design
+- **Status**: 🔄 In Development
+- **Design**: Alternative UI/UX approach
+- **Features**: Different design philosophy and user experience
+- **Location**: `./V1/`
 
 ---
 
-## 💰 **Cost Structure**
+## 🚀 **Quick Start**
 
-| Service | Cost | Purpose |
-|---------|------|---------|
-| **Perplexity AI** | $0.15 | Scene generation with sonar-pro model |
-| **ElevenLabs** | $0.50-$2.50 | Voice synthesis (scales with content) |
-| **JSON2Video** | $1.00 | Video rendering with effects |
-| **Total** | **$1.65-$3.65** | **Complete 11-15 minute biblical video** |
-
----
-
-## 🛠️ **Installation & Setup**
-
-### **Prerequisites**
-- Node.js 18+ and npm
-- n8n instance with biblical video workflow
-- API keys for Perplexity AI, ElevenLabs, JSON2Video
-
-### **Quick Start**
-
+### **Running V0 (Recommended) - ✅ WORKING**
 ```bash
-# Clone the repository
-git clone <repository-url>
-cd N8N/ui
+# Navigate to V0 directory
+cd V0
 
 # Install dependencies
 npm install
 
 # Start development server
 npm run dev
-
-# Build for production
-npm run build
 ```
 
-### **Environment Configuration**
+**🎉 V0 is now running successfully!**
+- **Local Access**: `http://localhost:5173/`
+- **Network Access**: `http://192.168.56.1:5173/`
+- **Status**: ✅ Server running and accessible
 
-Create a `.env` file:
-```env
-VITE_N8N_WEBHOOK_URL=your_n8n_webhook_url
-VITE_PERPLEXITY_API_KEY=pplx-your_api_key_here
-```
-
----
-
-## 🏗️ **Technical Architecture**
-
-### **Frontend Stack**
-- **React 18**: Modern React with hooks and context
-- **TypeScript**: Full type safety and developer experience
-- **Tailwind CSS**: Utility-first styling framework
-- **Vite**: Fast build tool and development server
-- **Lucide React**: Professional icon library
-
-### **API Integrations**
-- **Perplexity AI**: Real API calls with proper authentication
-- **n8n Webhook**: Complete integration with POST requests
-- **ElevenLabs**: Voice synthesis (via n8n)
-- **JSON2Video**: Video rendering (via n8n)
-
-### **Key Components**
-```
-src/
-├── components/
-│   ├── AdvancedSettings.tsx      # Perplexity AI configuration
-│   ├── GenerationControls.tsx    # n8n webhook integration
-│   ├── VisualSettings.tsx        # 20-scene optimization
-│   ├── ProgressTracker.tsx       # Generation progress
-│   ├── TextInput.tsx             # Content input
-│   ├── VoiceSettings.tsx         # ElevenLabs configuration
-│   └── ContentTypeSelector.tsx   # Content type selection
-├── types/
-│   └── index.ts                  # TypeScript definitions
-└── App.tsx                       # Main application
-```
-
----
-
-## 🎯 **User Workflow**
-
-1. **📝 Input Biblical Text**: Paste or upload biblical content
-2. **🎭 Select Content Type**: Choose Hebrew Israelite representation style
-3. **🎙️ Configure Voice**: Select ElevenLabs voice and settings
-4. **🎨 Set Visual Style**: Choose biblical realism or other styles
-5. **🔗 Configure n8n**: Enter webhook URL and test connection
-6. **🚀 Generate Video**: Click "Generate with n8n" for production
-7. **📊 Track Progress**: Monitor 6-stage generation process
-8. **⬇️ Download**: Receive completed video with authentic representation
-
----
-
-## 🔧 **API Configuration**
-
-### **Perplexity AI Setup**
-```typescript
-// Authentication format
-const headers = {
-  'Authorization': 'Bearer pplx-your_api_key_here',
-  'Content-Type': 'application/json'
-};
-
-// Request payload
-const payload = {
-  model: 'sonar-pro',
-  messages: [...],
-  max_tokens: 5000,
-  temperature: 0.7
-};
-```
-
-### **n8n Webhook Integration**
-```typescript
-// Webhook configuration
-const webhookConfig = {
-  url: 'https://your-n8n-instance.com/webhook/biblical-video',
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  payload: {
-    inputText: 'biblical content',
-    settings: {...}
-  }
-};
-```
-
----
-
-## 📊 **Features Overview**
-
-### **Content Processing**
-- ✅ Real-time word count and analysis
-- ✅ Automatic scene segmentation (20 scenes)
-- ✅ Biblical text optimization with Perplexity AI
-- ✅ Hebrew Israelite cultural authenticity
-
-### **Voice Synthesis**
-- ✅ Professional ElevenLabs voices
-- ✅ Adjustable speed and tone
-- ✅ High-quality audio generation
-- ✅ Cultural representation in narration
-
-### **Visual Generation**
-- ✅ High-quality biblical imagery
-- ✅ Ken Burns effects for dynamic visuals
-- ✅ Smooth transitions between scenes
-- ✅ Culturally authentic Hebrew Israelite representation
-
-### **Video Production**
-- ✅ Professional 11-15 minute videos
-- ✅ Automatic caption generation
-- ✅ High-definition output
-- ✅ Ready for social media or educational use
-
----
-
-## 🚀 **Production Deployment**
-
-### **Build for Production**
+### **Running V1**
 ```bash
-npm run build
+# Navigate to V1 directory
+cd V1
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
 ```
 
-### **Deploy to Netlify**
+---
+
+## 📊 **Version Comparison**
+
+| Feature | V0 | V1 |
+|---------|----|----|
+| **Design Philosophy** | Professional SaaS | Alternative UX |
+| **Text Processing** | ✅ Real-time | 🔄 Planned |
+| **Voice Settings** | ✅ Advanced | 🔄 Planned |
+| **Visual Settings** | ✅ Complete | 🔄 Planned |
+| **Template System** | ✅ Full | 🔄 Planned |
+| **Progress Tracking** | ✅ Enhanced | 🔄 Planned |
+| **Mobile Responsive** | ✅ Complete | 🔄 Planned |
+| **Authentication** | ✅ Complete | 🔄 Planned |
+| **SaaS Features** | ✅ Complete | 🔄 Planned |
+| **Server Status** | ✅ Running | 🔄 Not Started |
+
+---
+
+## 🎯 **Version Details**
+
+### **V0 - Complete SaaS Frontend ✅**
+- **Based on**: Bolt.AI UI Design Prompt
+- **Architecture**: React + TypeScript + Tailwind CSS
+- **Features**: All advanced features implemented
+- **Status**: ✅ Ready for production deployment
+- **Server**: ✅ Running on localhost:5173
+- **Documentation**: See `./V0/README.md`
+
+### **V1 - Alternative Design**
+- **Based on**: Alternative design requirements
+- **Architecture**: TBD
+- **Features**: Different feature set and user experience
+- **Status**: In development
+- **Documentation**: See `./V1/README.md`
+
+---
+
+## 🔄 **Version Management**
+
+### **Development Workflow**
+1. **Choose Version**: Select V0 or V1 based on requirements
+2. **Install Dependencies**: Run `npm install` in version directory
+3. **Start Development**: Run `npm run dev` for local development
+4. **Build for Production**: Run `npm run build` for deployment
+
+### **Version Switching**
+- Each version is self-contained
+- Dependencies are managed separately
+- No conflicts between versions
+- Easy to compare and test different approaches
+
+---
+
+## 📁 **Directory Structure**
+
+```
+ui/
+├── V0/                    # Complete SaaS Frontend ✅
+│   ├── src/              # React source code
+│   ├── public/           # Static assets
+│   ├── package.json      # Dependencies
+│   ├── README.md         # V0 documentation
+│   ├── vite.config.ts    # Server configuration
+│   └── ...               # Configuration files
+├── V1/                   # Alternative Design
+│   ├── src/              # React source code
+│   ├── public/           # Static assets
+│   ├── package.json      # Dependencies
+│   ├── README.md         # V1 documentation
+│   └── ...               # Configuration files
+├── node_modules/         # Shared dependencies (if any)
+└── README.md            # This file
+```
+
+---
+
+## 🎨 **Design Philosophies**
+
+### **V0 Design Approach ✅**
+- **Professional SaaS**: Clean, modern interface for business use
+- **Feature-Rich**: Comprehensive toolset for video creation
+- **User-Friendly**: Intuitive workflow for non-technical users
+- **Mobile-First**: Responsive design for all devices
+- **Biblical Focus**: Specialized for religious content creation
+- **Production Ready**: Optimized for deployment and scaling
+
+### **V1 Design Approach**
+- **Alternative UX**: Different user experience philosophy
+- **Innovative Interface**: New approaches to video creation
+- **Experimental Features**: Cutting-edge functionality
+- **Different Target**: Alternative user base or use cases
+
+---
+
+## 🚀 **Deployment**
+
+### **V0 Deployment ✅**
 ```bash
-# Install Netlify CLI
-npm install -g netlify-cli
-
-# Deploy to Netlify
-netlify deploy --prod --dir=dist
+cd V0
+npm run build
+# Deploy dist/ folder to your hosting platform
 ```
 
-### **Environment Variables**
-Configure in your hosting platform:
-- `VITE_N8N_WEBHOOK_URL`: Your n8n webhook endpoint
-- `VITE_PERPLEXITY_API_KEY`: Your Perplexity AI API key
+### **V1 Deployment**
+```bash
+cd V1
+npm run build
+# Deploy dist/ folder to your hosting platform
+```
 
 ---
 
-## 🎬 **Cultural Authenticity**
+## 📞 **Support & Development**
 
-### **Hebrew Israelite Representation**
-- ✅ **Authentic Cultural Elements**: Proper representation in visuals
-- ✅ **Biblical Accuracy**: Scholarly research integration
-- ✅ **Visual Authenticity**: Culturally appropriate imagery
-- ✅ **Narrative Style**: Engaging storytelling approach
+### **Version-Specific Support**
+- **V0 Issues**: Check `./V0/README.md` for documentation
+- **V1 Issues**: Check `./V1/README.md` for documentation
+- **General Issues**: Review this README for version management
 
-### **Quality Assurance**
-- ✅ **Cultural Sensitivity**: Respectful content generation
-- ✅ **Historical Accuracy**: Proper biblical context
-- ✅ **Visual Consistency**: Cohesive artistic style
-- ✅ **Narrative Flow**: Engaging story progression
-
----
-
-## 🔐 **Security & Best Practices**
-
-### **API Security**
-- ✅ API keys handled securely
-- ✅ No sensitive data in localStorage
-- ✅ Proper CORS handling
-- ✅ Environment variable protection
-
-### **Error Handling**
-- ✅ Comprehensive error messages
-- ✅ Graceful degradation
-- ✅ User-friendly feedback
-- ✅ Automatic retry mechanisms
+### **Development Guidelines**
+- Keep versions separate and self-contained
+- Document changes in version-specific README files
+- Test each version independently
+- Maintain consistent code quality across versions
 
 ---
 
-## 📈 **Success Metrics**
+## 🎯 **Recommendations**
 
-- **✅ 95% Production Ready**
-- **✅ All APIs Working**
-- **✅ Real-time Cost Tracking**
-- **✅ Professional UI/UX**
-- **✅ Comprehensive Documentation**
-- **✅ Full n8n Integration**
+### **For Production Use ✅**
+- **V0**: ✅ Recommended for immediate deployment
+- **Complete Feature Set**: All advanced features implemented
+- **Production Ready**: Tested and optimized
+- **Comprehensive Documentation**: Full implementation guide
+- **Server Running**: ✅ Accessible at localhost:5173
 
----
-
-## 🤝 **Contributing**
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
+### **For Development/Testing**
+- **V1**: Use for exploring alternative approaches
+- **Experimental Features**: Test new ideas and concepts
+- **Design Comparison**: Compare different UX philosophies
+- **Future Planning**: Basis for next-generation features
 
 ---
 
-## 📞 **Support**
+## 🎉 **Success Status**
 
-For technical support or questions:
-- Check the documentation
-- Review the MVP Integration Guide
-- Test API connections
-- Verify n8n workflow setup
+### **✅ V0 Implementation Complete**
+- **Frontend**: ✅ Fully implemented with all features
+- **Server**: ✅ Running successfully on localhost:5173
+- **Configuration**: ✅ Optimized for development and production
+- **Documentation**: ✅ Comprehensive guides and instructions
+- **Ready for**: ✅ User testing, deployment, and production use
+
+### **🚀 Quick Access**
+- **V0 Application**: `http://localhost:5173/`
+- **V0 Documentation**: `./V0/README.md`
+- **V0 Source Code**: `./V0/src/`
 
 ---
 
-**🏆 Production-Ready Biblical Video Generation Platform with Authentic Hebrew Israelite Representation!** 
+**🎬 V0 is now running successfully and ready for production deployment!**
+
+**Access your BibleVideoAI application at: http://localhost:5173/**
+
+**V0 is production-ready, while V1 offers alternative design approaches for future development.** 
